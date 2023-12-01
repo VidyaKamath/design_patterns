@@ -1,8 +1,8 @@
 from factory import IProductReleaseFactory, ProductReleaseFactory_1, ProductReleaseFactory_2
 
 def notify_client_to_publish(product_release_factory: IProductReleaseFactory, product_type):
-	# Scenario 1 - Factory Pattern
-	# Intent is to seperate the responsibility of object creation from the client
+	# Factory Pattern: Intent is to seperate the 
+	# responsibility of object creation from the client
 
 	# Adding new products will not impact the client code 
 	# Creating the Product release object for a given factory and 

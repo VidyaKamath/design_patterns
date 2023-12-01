@@ -39,10 +39,10 @@ class ProductReleaseFactory_2(IProductReleaseFactory):
         if product_type == "A":
             return ProductARelease(product_type)
         elif product_type == "A2":
-            return ProductA1Release(product_type)
+            return ProductA2Release(product_type)
         elif product_type == "B":
             return ProductBRelease(product_type)
         elif product_type == "B2":
-            return ProductB1Release(product_type)
+            return ProductB2Release(product_type)
         else:
             raise Exception(f"{product_type} not found")
