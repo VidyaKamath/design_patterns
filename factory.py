@@ -1,54 +1,48 @@
 from abc import ABC, abstractmethod
+from product_release import (
+    ProductARelease,
+    ProductBRelease, 
+    ProductA1Release, 
+    ProductA2Release, 
+    ProductB1Release, 
+    ProductB2Release)
 
-# Interface 
-class IProductRelease(ABC):
-	def __init__(self, product_type):
-		self.product_type = product_type
-		super().__init__()
-	@abstractmethod
-	def get_release_date():
-		pass
+class IProductReleaseFactory(ABC):
+    def __init__(self):
+        pass
+    
+    @abstractmethod
+    def get_product_release(self, product_type):
+        pass
 
-	@abstractmethod
-	def get_sw_release_version():
-		pass
+class ProductReleaseFactory_1(IProductReleaseFactory):
+    def __init__(self):
+       super().__init__()
 
-	@abstractmethod
-	def get_release_type():
-		pass
+    def get_product_release(self, product_type):
+        if product_type == "A":
+            return ProductARelease(product_type)
+        elif product_type == "A1":
+            return ProductA1Release(product_type)
+        elif product_type == "B":
+            return ProductBRelease(product_type)
+        elif product_type == "B1":
+            return ProductB1Release(product_type)
+        else:
+            raise Exception(f"{product_type} not found")
 
-# Concrete classes implementing the interface
-class ProductARelease(IProductRelease):
-	
-	def get_release_date(self):
-		return "Product A release date"
-	
-	def get_sw_release_version(self):
-		return "Product A sw release version"
-	
-	def get_release_type(self):
-		return "Product A release type"
+class ProductReleaseFactory_2(IProductReleaseFactory):
+    def __init__(self):
+       super().__init__()
 
-class ProductBRelease(IProductRelease):
-	
-	def get_release_date(self):
-		return "Product B release date"
-	
-	def get_sw_release_version(self):
-		return "Product B sw release version"
-	
-	def get_release_type(self):
-		return "Product B release type"
-
-class ProductReleaseFactory():
-	def __init__(self, product_type):
-		self.product_type = product_type
-	
-	def get_product_release(self):
-		if self.product_type == "A":
-			return ProductARelease(self.product_type)
-		if self.product_type == "B":
-			return ProductBRelease(self.product_type)
-		else:
-			raise Exception(f"{self.product_type} not found")
-		# Any new product type can be added by extending this Factroy class
+    def get_product_release(self, product_type):
+        if product_type == "A":
+            return ProductARelease(product_type)
+        elif product_type == "A2":
+            return ProductA1Release(product_type)
+        elif product_type == "B":
+            return ProductBRelease(product_type)
+        elif product_type == "B2":
+            return ProductB1Release(product_type)
+        else:
+            raise Exception(f"{product_type} not found")
